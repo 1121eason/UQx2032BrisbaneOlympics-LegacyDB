@@ -1,97 +1,93 @@
 # UQx2032BrisbaneOlympics-LegacyDB
 
-**A database project for managing the Olympic Athletes’ Village and its transition into housing and community infrastructure.**
+**SQL Database Development & Business Analytics**
 
-[繁體中文](README.zh-TW.md) · [Business case](docs/project-overview.md) · [Data model](docs/data-model.md) · [Data dictionary](docs/data-dictionary.md) · [Query guide](docs/query-guide.md)
+Building relational databases and using SQL to answer operational, sustainability and asset-management questions.
 
-This UQ BISM7206 team project models a fictional Brisbane 2032 village scenario. It connects village operations, sustainability monitoring and post-Games legacy planning in a relational database. It is an academic prototype, with no affiliation to the IOC or Brisbane 2032 organising bodies.
+[繁體中文](README.zh-TW.md) · [SQL skills and code evidence](docs/sql-skills.md) · [Business case studies](docs/business-case-studies.md) · [DB / Data Analyst positioning](docs/career-positioning.md)
+
+This portfolio demonstrates how I use SQL to structure business data, integrate related entities and turn management questions into analytical queries. Developed as a UQ BISM7206 team project, it models Brisbane 2032 Olympic Village operations and post-Games transformation. The scenario and dataset are academic simulations of real-world business problems.
 
 **41 domain tables · 46 foreign-key constraints · 5 reporting views · 6 analytical query files · 3,681 demo records**
 
-![Original team EER diagram](docs/images/original-erd.png)
+My documented contributions focus on the sustainability data model, integrated ERD reviews, six management questions and SQL reports, and final SQL integration. The wider schema is a team deliverable. [Contribution details](docs/contributions.md) distinguish original team work from later AI-assisted portfolio preparation.
 
-*Historical diagram from the source report. The executable schema also includes `roomconversion`, which the supplied diagrams/models omit.*
+## Skills demonstrated
 
-## The business problem
+| Capability | Implementation | Evidence |
+| --- | --- | --- |
+| Build a relational database with SQL | `CREATE DATABASE`, `CREATE TABLE`, data types, primary/composite keys, foreign keys and unique constraints | [Schema SQL](database/01_schema.sql), [data model](docs/data-model.md) |
+| Integrate business data | Related people, infrastructure, medical, environmental, asset and conversion entities; reference and junction tables | [Data dictionary](docs/data-dictionary.md), [Workbench models](models/) |
+| Prepare reporting datasets | Five views combining records across modules, with explicit reporting dates and grain | [View definitions](database/03_views.sql) |
+| Write analytical SQL | Multi-table joins, CTEs, conditional aggregation, `UNION ALL`, `ROW_NUMBER`, `DENSE_RANK`, percentages and protected division | [Six SQL reports](queries/), [SQL walkthrough](docs/sql-skills.md) |
+| Check data integrity and metric definitions | Orphan-reference checks, row-count checks, date/quantity review, denominator and duplicate-counting interpretation | [Checks](checks/), [query guide](docs/query-guide.md) |
+| Connect analysis to business decisions | Resource-demand prioritisation, asset planning gaps, workforce participation and conversion oversight | [Business case studies](docs/business-case-studies.md) |
 
-The village must work during the Games and deliver value after them. Managers need to know which buildings consume the most energy, where waste is generated, how assets will be reused, how accommodation will be converted, and whether the work benefits the local community. A connected data model makes those questions traceable across buildings, suppliers, contractors and conversion projects.
+**For SQL / Database Developer reviewers:** start with the [schema](database/01_schema.sql), [design walkthrough](docs/sql-skills.md) and [integrity checks](checks/01_foreign_keys.sql).
 
-| Area | What the database supports |
-| --- | --- |
-| People and accreditation | People, NOCs, countries, groups and time-bound roles |
-| Infrastructure | Villages, buildings, rooms, allocations, facilities and usage |
-| Sustainability | Energy and water meters, timestamped readings, general and medical waste |
-| Medical operations | Clinics, services, specialties, staff and encounters |
-| Asset lifecycle | Suppliers, asset categories, asset status and disposal records |
-| Post-Games conversion | Contractors, projects, tasks and room conversion records |
-| Social impact | Employment records and work activities linked to conversion projects |
+**For Data Analyst reviewers:** start with the [business cases](docs/business-case-studies.md), [six reports](queries/) and [metric interpretation](docs/query-guide.md).
 
-## Start with MySQL 8
+## Business problems addressed with SQL
 
-Requires MySQL 8.0+; the reporting SQL uses CTEs and window functions. MySQL Workbench can be used as the SQL client.
+| Business problem | SQL approach | Decision the output can inform |
+| --- | --- | --- |
+| Which buildings and villages should receive an energy-use review first? | Join readings, meters, sources and locations; aggregate by reporting period and rank totals | Prioritise investigation of high-demand sites, then check occupancy and usage context — [Q1](queries/01_energy_consumption.sql) |
+| Where are waste-handling requirements concentrated? | Combine general and medical streams with `UNION ALL`, then aggregate and rank | Review collection capacity and specialist handling at hotspots — [Q2](queries/02_waste_compliance.sql) |
+| How are assets planned for reuse, and where are disposal records missing? | Select the latest in-period disposal record per asset; separately check missing records with `NOT EXISTS` | Assign follow-up for missing plans and coordinate recycling, donation and resale — [Q3](queries/03_asset_disposal.sql), [gap check](checks/02_quality_review.sql) |
+| What share of recorded work is associated with local employment? | Distinct employment-record counts, conditional work-hour sums and protected percentages | Support community-benefit reporting with an explicit denominator — [Q4](queries/04_local_employment.sql) |
+| Which completed building conversions are associated with each legacy use? | Select the latest completed conversion per building and aggregate associated room stock | Review target-use distribution and request room-level completion evidence — [Q5](queries/05_conversion_outcomes.sql) |
+| How can several legacy indicators be compared together? | Pre-aggregate measures, apply illustrative weights and rank projects | Provide a discussion aid for project review and sensitivity analysis — [Q6](queries/06_legacy_impact_ranking.sql) |
+
+## Example findings and next decisions
+
+All figures below describe the demonstration dataset. The numerical CSV examples come from the labelled SQLite-adapted check; the MySQL CI run separately verified import, counts, integrity and execution of all six reports.
+
+| Example finding | Business interpretation | Proposed next action |
+| --- | --- | --- |
+| Building B has the highest energy total: **3,029.41 kWh** for 18–27 July 2032 | A site to investigate; total consumption alone does not establish inefficiency | Review operating hours, occupancy and meter coverage before proposing interventions |
+| **42 of 100 assets have no disposal record**, an all-time record-coverage gap of **42%** | The disposal-method distribution alone does not describe planning completeness | Produce an asset follow-up list and confirm the intended destination and owner |
+| Local employment records account for **80%** of active employment records and **79.85%** of recorded hours for 10 July–15 August 2032 | Participation is broadly aligned across record counts and work hours in the sample | Agree the reporting target and verify whether employment records represent unique people |
+
+These are analytical findings and proposed actions, not measured cost savings, emissions reductions or implemented business outcomes. [Read the cases, calculations and limitations](docs/business-case-studies.md).
+
+## Reproduce the database and queries
+
+Use **MySQL 8.0+**. The SQL uses CTEs and window functions.
+
+### MySQL Workbench
+
+1. Use a dedicated, empty demo environment.
+2. Execute [01_schema.sql](database/01_schema.sql), [02_demo_data.sql](database/02_demo_data.sql) and [03_views.sql](database/03_views.sql), in that order.
+3. Open a file in [queries/](queries/) and execute its reporting statements.
+4. Run the [foreign-key checks](checks/01_foreign_keys.sql) and review the [quality checks](checks/02_quality_review.sql).
+
+The scripts create `olympicdb`; use an isolated demo environment rather than an existing operational database.
 
 ### Docker Compose
 
-Install Docker with Compose, then from this directory:
-
 ```bash
 cp .env.example .env
-# Set your own local MYSQL_ROOT_PASSWORD in .env before starting.
+# Replace the local password placeholder in .env before starting.
 docker compose up -d --wait
 python3 scripts/validate_mysql.py --docker
 ```
 
-The first launch initializes an empty persistent database from `database/01_schema.sql`, `02_demo_data.sql` and `03_views.sql`. The SQL port is bound to `127.0.0.1:3307` by default. Initialization scripts run only when the volume is empty. Existing volumes are not automatically rebuilt. Use a dedicated demo instance: the scripts create a database named `olympicdb`.
+The first launch imports the three setup files into an empty persistent volume. Existing volumes are not automatically reinitialized. The SQL port binds to `127.0.0.1:3307` by default. For an existing MySQL client, configure `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER` and `MYSQL_PWD`, then run `python3 scripts/validate_mysql.py`.
 
-### Existing MySQL / Workbench
+## Validation evidence
 
-1. Open a dedicated empty demo server or schema; do not import into an existing operational database.
-2. Run the three SQL files in `database/` in numeric order.
-3. Open any file in `queries/` and execute it. Each query selects `olympicdb` and sets its own reporting dates.
-4. Run `checks/01_foreign_keys.sql`: every `violations` count should be zero. Review `checks/02_quality_review.sql` separately.
+**MySQL 8 integration passed on GitHub Actions on 26 October 2026.** A fresh database initialized successfully, the expected counts for all 41 tables matched, no orphan foreign-key references were found, and all six reporting files executed. [Passing run](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494) · [Machine-readable record](evidence/mysql-validation.json).
 
-For command-line validation, set `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER` and `MYSQL_PWD` in your local environment, then run `python3 scripts/validate_mysql.py`. Do not commit credentials.
+The separate portable check loaded 3,681 records and produced nine result sets. Its CSV files are labelled as SQLite-adapted outputs in [evidence/](evidence/README.md). Passing execution establishes technical reproducibility for the tested dataset; it does not establish the validity of every business assumption.
 
-## Management queries
+## Design, scope and attribution
 
-| Query | Decision supported | Techniques |
-| --- | --- | --- |
-| [Q1 — Energy](queries/01_energy_consumption.sql) | Identify the highest-consuming building and village | Reporting view, joins, date boundaries, aggregation, `DENSE_RANK` |
-| [Q2 — Waste](queries/02_waste_compliance.sql) | Compare general and clinical waste hotspots | `UNION ALL`, conditional aggregation, ranking |
-| [Q3 — Asset disposal](queries/03_asset_disposal.sql) | Compare planned recycling, donation and resale methods | `LEFT JOIN`, standardisation, `ROW_NUMBER`, percentage shares |
-| [Q4 — Local employment](queries/04_local_employment.sql) | Measure local participation among recorded workers and work hours | Distinct counts, conditional sums, protected division |
-| [Q5 — Conversion outcomes](queries/05_conversion_outcomes.sql) | Summarise buildings and room stock by completed conversion target | Latest-record selection, CTEs, zero-inclusive comparison |
-| [Q6 — Legacy impact](queries/06_legacy_impact_ranking.sql) | Rank conversion projects with an illustrative composite score | Pre-aggregation, window functions, weighted scores |
+[Data model](docs/data-model.md) · [Data dictionary](docs/data-dictionary.md) · [Processing history](docs/data-processing.md) · [Known limitations](docs/known-limitations.md) · [Source provenance](docs/provenance.md)
 
-Q5 retains two original result variants. Q6 uses `DENSE_RANK <= 10`, so tied ranks can return more than ten rows. The composite score is a project assumption, not an official sustainability standard. Read the [query guide](docs/query-guide.md) before interpreting outputs.
+![Historical team EER diagram](docs/images/original-erd.png)
 
-## Repository contents
+The historical diagram and both supplied Workbench models contain 40 tables and omit `roomconversion`, which is present in the 41-table execution schema. Q3's final disposal summary excludes assets with no in-period plan; Q4 counts employment records rather than proven unique individuals; Q5 uses building room stock; Q6 uses illustrative weights and retains tied ranks. These interpretations are documented in the [query guide](docs/query-guide.md).
 
-| Location | Contents |
-| --- | --- |
-| `database/` | Split schema, demo data and portable view definitions |
-| `queries/` | Six runnable reporting files, with reporting logic preserved |
-| `checks/` | Referential-integrity and data-quality review SQL |
-| `scripts/` | MySQL validation, dependency-free adapted-query check and schema-specific demo identity replacement |
-| `docs/` | Business overview, schema dictionary, model, query interpretation and limitations |
-| `models/` | Both historical MySQL Workbench models, with author identifiers removed |
-| `evidence/` | Adapted-query outputs and a machine-readable validation record |
-| `.github/workflows/` | MySQL 8 integration workflow to run after GitHub publication |
+Original team: **Purple Chase (T1G2)** — Chieh-Yu Liu, Yi-Cheng Lee, Ziqi Huang and Yi-Cong Zhu. Supplied source filenames use `PurpleChess`. The project is an academic prototype, with no official UQ/Olympic partnership implied. This evidence supports SQL database-development and analytical-reporting skills; production administration, recovery testing, performance benchmarks and a deployed BI/application interface are outside the delivered scope.
 
-## Verification and limitations
-
-**MySQL 8 integration passed on GitHub Actions on 26 October 2026.** The workflow initialized a fresh database, confirmed the expected row counts for all 41 tables, found no orphan foreign-key references and successfully executed all six reporting files. See the [passing run](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494) and [validation record](evidence/mysql-validation.json).
-
-An additional adapted SQLite check loaded all 3,681 rows and produced nine result sets. Its CSV outputs and dialect adaptations are labelled separately in [evidence](evidence/README.md). Passing execution does not establish the business validity of the reporting assumptions or production readiness.
-
-The supplied Workbench models contain 40 tables and omit `roomconversion`, which is present in the database backup. The executable schema follows the backup. A stray spreadsheet import table is excluded from the execution copy. The original report also contains inconsistencies in query presentation and claims broader controls than the schema implements; see [known limitations](docs/known-limitations.md).
-
-## Authorship and provenance
-
-Original team: **Purple Chase (T1G2)**, as named in the report; supplied filenames use `PurpleChess`. Contributors listed in the report are Chieh-Yu Liu, Yi-Cheng Lee, Ziqi Huang and Yi-Cong Zhu. This is collaborative work.
-
-The project log attributes sustainability modelling, integrated ERD reviews, six management questions, SQL query development, query explanations and final SQL integration to **Yi-Cheng Lee (Eason Li)**. That attribution describes documented responsibilities and does not imply sole authorship of the entire database. See [contributions](docs/contributions.md).
-
-The original report describes a mixture of fictional/generated test records and public reference data. For this public technical edition, person names and birth dates, staff registration numbers, supplier/contractor names and contact emails are replaced with deliberate demo placeholders; identifiers and relationships are preserved. Measurements and project records remain academic test data and must not be presented as real Games data. See [provenance](docs/provenance.md).
-
-Original reports, the team charter, raw source workbooks and original database backups are excluded from this public repository. The complete private source package is retained separately. No new open-source licence is assigned to team-owned work. See [publication notes](docs/publication.md).
+Known person/contact fields have been replaced with demo placeholders in this public edition. Original reports, the charter, raw workbooks and unmodified backups are kept separately. No new licence is granted for team-owned work. [Publication notes](docs/publication.md).

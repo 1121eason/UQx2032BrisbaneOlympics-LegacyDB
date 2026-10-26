@@ -1,70 +1,77 @@
 # UQx2032BrisbaneOlympics-LegacyDB
 
-**2032 Brisbane 奧運選手村與賽後轉型資料庫**
+**SQL 資料庫開發 × 商業資料分析**
 
-[English](README.md) · [專案介紹](docs/project-overview.md) · [資料模型](docs/data-model.md) · [資料字典](docs/data-dictionary.md) · [查詢說明](docs/query-guide.md)
+用 SQL 建立關聯式資料庫，將營運、永續與資產管理問題轉成分析查詢及決策資訊。
 
-這個專案以 **2032 Brisbane 奧運選手村**為情境，用關聯式資料庫串連「賽事期間的營運」與「賽後的永續轉型」。它是 UQ BISM7206 的團隊學術原型；案例經過教學簡化，並非奧運官方系統。
+[English](README.md) · [SQL 技術與程式證據](docs/sql-skills.md) · [商業案例分析](docs/business-case-studies.md) · [DB／DA 求職定位](docs/career-positioning.md)
 
-**41 張正式資料表｜46 個外鍵｜5 個 View｜6 組管理查詢｜3,681 筆示範資料**
+這個作品展示我如何用 SQL 組織商業資料、串連不同模組，並把管理問題轉成可執行的查詢。專案以 Brisbane 2032 奧運選手村與賽後轉型為情境，是 UQ BISM7206 的團隊學術專案，使用模擬資料處理具有實務意義的商業問題。
 
-## 專案在解決什麼問題？
+**41 張正式資料表｜46 個外鍵關係｜5 個 View｜6 組分析查詢｜3,681 筆示範資料**
 
-奧運結束後，選手村的房間、建築和設備需要有下一個用途。這個資料庫讓管理者把賽事營運、能源與廢棄物、資產處置、承包商、住宅轉型及在地就業放在同一個資料架構中追蹤。
+我在原始專案中的貢獻包含永續模組、整合 ERD 檢查、六組管理問題與 SQL，以及最終 SQL 整合。完整資料模型屬於團隊成果；後續文件、執行包裝與驗證工具的 AI 協作也有另外標示。[查看貢獻說明](docs/contributions.md)。
 
-| 模組 | 可以管理的內容 |
-| --- | --- |
-| 人員與資格 | 選手、工作人員、NOC、角色及角色有效期間 |
-| 基礎設施 | 選手村、建築、房間、住宿分配、設施與使用紀錄 |
-| 永續監測 | 能源／用水讀數、碳強度、一般與醫療廢棄物 |
-| 醫療營運 | 診所、醫療服務、專業人員、就診及參與人員 |
-| 資產生命週期 | 供應商、設備、回收、捐贈及轉售紀錄 |
-| 賽後轉型 | 承包商、轉型專案、工作項目及房間用途轉換 |
-| 社會影響 | 在地聘用情況、工作活動與投入時數 |
+## 這份作品展示的能力
 
-## 六組 SQL 查詢
+| 能力 | 具體實作 | 可以查看的證據 |
+| --- | --- | --- |
+| 用 SQL 建立資料庫 | 建立資料庫與資料表，設定欄位型別、主鍵、複合鍵、外鍵及唯一限制 | [建表 SQL](database/01_schema.sql) |
+| 設計與串連商業資料 | 整合人員、建築、醫療、能源、資產及轉型專案資料 | [資料模型](docs/data-model.md)、[資料字典](docs/data-dictionary.md) |
+| 建立可重複使用的查詢入口 | 使用 View 整合跨表資料，定義分析的日期範圍與資料粒度 | [View SQL](database/03_views.sql) |
+| 撰寫分析查詢 | JOIN、CTE、條件彙總、UNION ALL、ROW_NUMBER、DENSE_RANK 及比例計算 | [六組 SQL](queries/)、[技術解說](docs/sql-skills.md) |
+| 檢查資料可信度 | 檢查孤立參照、資料筆數、日期順序、異常數值及統計分母 | [檢查 SQL](checks/)、[查詢解讀](docs/query-guide.md) |
+| 用分析支援商業判斷 | 把查詢結果轉成問題定位、原因調查與行動建議 | [商業案例](docs/business-case-studies.md) |
 
-1. 找出期間內耗電最高的建築與選手村，並估算碳影響。
-2. 找出一般及醫療廢棄物的主要來源。
-3. 比較資產規劃中的回收、捐贈與轉售占比。
-4. 分析有活動紀錄的人員中，在地就業人數與工時占比。
-5. 比較已完成建築轉型所涵蓋的房間、容量與無障礙房間。
-6. 以專案假設的權重，綜合比較永續、空間轉型和在地就業表現。
+**DB／SQL Developer 方向：**先看建表、資料關係、鍵值限制、View 與資料完整性。
 
-使用的 SQL 技術包含多表 JOIN、View、CTE、Window Functions、條件彙總、日期區間篩選及百分比計算。分數權重是示範設計，不能當成官方評分。Q5 的房間數來自整棟建築的既有房間，不能直接解讀為逐間驗收完成；Q6 有同分時可能超過十筆。
+**Data Analyst 方向：**先看問題定義、資料整合、指標計算、分析發現與決策建議。
 
-## 如何執行
+## 用 SQL 處理的商業問題
 
-建議使用 **MySQL 8.0 以上與 MySQL Workbench**。
+| 商業問題 | SQL 處理方式 | 可以支援的決策 |
+| --- | --- | --- |
+| 哪些建築需要優先調查耗電？ | 串連讀數、電表與地點，依期間彙總和排名 | 排定能源調查優先順序；再結合入住率和營運時數判斷 — [Q1](queries/01_energy_consumption.sql) |
+| 廢棄物處理需求集中在哪裡？ | 整合一般與醫療廢棄物，分類彙總與排名 | 檢視清運量能與專業處理需求 — [Q2](queries/02_waste_compliance.sql) |
+| 資產準備如何再利用？哪些缺乏紀錄？ | 比較每個資產期間內最新處置安排，另外檢查缺少紀錄的資產 | 安排回收、捐贈、轉售及缺漏追蹤 — [Q3](queries/03_asset_disposal.sql) |
+| 在地就業參與程度有多少？ | 分別計算有效活動中的聘用紀錄比例和工時比例 | 支援社區效益報告，並釐清統計分母 — [Q4](queries/04_local_employment.sql) |
+| 建築轉型後對應哪些用途？ | 選出每棟建築期間內最新完成的轉型，彙總相關房間存量 | 檢視用途分布並要求房間層級驗收證據 — [Q5](queries/05_conversion_outcomes.sql) |
+| 如何綜合比較轉型專案？ | 整合指標、套用示範權重並排名 | 提供專案討論依據，再測試不同權重 — [Q6](queries/06_legacy_impact_ranking.sql) |
 
-1. 使用獨立、空白的示範資料庫環境。
-2. 依序執行 `database/01_schema.sql`、`database/02_demo_data.sql`、`database/03_views.sql`。
-3. 開啟 `queries/` 內的 SQL，執行需要的查詢。
-4. 執行 `checks/01_foreign_keys.sql`，確認每個違規數為 0；另外查看資料品質檢查。
+## 具體分析發現
 
-如果電腦有 Docker，也可以先複製 `.env.example` 為 `.env`、設定自己的本機密碼，再執行：
+以下數字來自模擬資料。CSV 數值取自已標示的 SQLite 轉換檢查；MySQL 8 另已通過建庫、筆數、外鍵與六組查詢的執行驗證。
+
+- **能源管理：**2032/7/18–7/27，Building B 的用電總量最高，為 **3,029.41 kWh**。這能協助排定調查順序；判斷是否浪費能源，仍需入住率、面積或營運時數。
+- **資產規劃：**100 個資產中有 **42 個沒有任何處置紀錄，缺漏比例為 42%**。這個全期間檢查能找出規劃缺口；後續可確認負責人與資產去向。
+- **在地就業：**2032/7/10–8/15，有活動紀錄的聘用資料中，在地紀錄占 **80%**，在地工時占 **79.85%**。這是紀錄與工時的分析，不能直接當成不重複的真實人數。
+
+這些是分析結果與建議，沒有宣稱已替企業節省成本或降低排放。完整的「商業問題 → 指標 → SQL → 發現 → 建議 → 限制」見 [商業案例文件](docs/business-case-studies.md)。
+
+## 如何操作
+
+使用 **MySQL 8.0 以上與 MySQL Workbench**，在獨立、空白的示範環境依序執行：
+
+1. [01_schema.sql](database/01_schema.sql)：建立資料庫與資料表。
+2. [02_demo_data.sql](database/02_demo_data.sql)：匯入示範資料。
+3. [03_views.sql](database/03_views.sql)：建立分析 View。
+4. 開啟 [queries/](queries/) 的 SQL 執行查詢，再執行 [checks/](checks/) 檢查。
+
+如果有 Docker，可先複製 `.env.example` 為 `.env`，設定自己的本機密碼，再執行：
 
 ```bash
 docker compose up -d --wait
 python3 scripts/validate_mysql.py --docker
 ```
 
-首次啟動會建立示範資料。已有資料的 Docker volume 不會重新匯入。對外 SQL 連線預設僅綁定本機 `127.0.0.1:3307`。
+首次啟動會匯入示範資料，已有資料的 volume 不會自動重建；預設連線位置是本機 `127.0.0.1:3307`。資料庫名稱為 `olympicdb`。
 
-## 已完成的整理與驗證
+## 已驗證與仍需注意的地方
 
-原始備份被拆成結構、資料、View 和查詢；執行版本移除了多餘的試算表匯入表與原本的 `root@localhost` View 定義者。公開版本中的姓名、生日、醫療人員註冊號碼，以及供應商／承包商名稱與聯絡信箱，都已替換成示範值。原始檔保留在另外的完整整理包中。
+**2026/10/26 已通過 GitHub Actions 的 MySQL 8 驗證：**空白建庫、41 張表筆數、外鍵參照及六組 SQL 執行均成功。[查看通過紀錄](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494) · [驗證文件](evidence/README.md)。
 
-**2026 年 10 月 26 日已通過 GitHub Actions 的 MySQL 8 驗證**：空白資料庫成功建立、41 張表的筆數符合預期、外鍵沒有孤立參照，六組 SQL 全部成功執行。[查看通過紀錄](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494)。
+兩版歷史 Workbench 模型有 40 張表，缺少執行版本中的 `roomconversion`。Q5 的房間數來自建築房間存量，不能直接當成逐間改建完成；Q6 是示範評分，同分時會多於十筆。這些限制已寫入 [查詢解讀](docs/query-guide.md) 與 [限制說明](docs/known-limitations.md)。
 
-另外也完成 SQLite 轉換檢查，41 張表共載入 3,681 筆資料並產生九組結果。`evidence/` 的 CSV 明確標示為轉換檢查輸出；通過執行不代表所有管理假設已獲業務驗證。細節見 [驗證紀錄](evidence/README.md)。
+原始團隊為 **Purple Chase（T1G2）**：Chieh-Yu Liu、Yi-Cheng Lee、Ziqi Huang、Yi-Cong Zhu。這是課程作品，沒有 UQ／奧運官方合作的含意。作品展示 SQL 資料庫開發與分析能力；正式維運、備份還原演練、效能基準及 BI／應用程式介面不在目前交付範圍。
 
-兩個原始 `.mwb` 模型都有 40 張表，缺少備份中存在的 `roomconversion`。執行版本以資料庫備份為準；完整限制請見 [known-limitations.md](docs/known-limitations.md)。
-
-## 你的作品集定位
-
-專案名稱：**UQx2032BrisbaneOlympics-LegacyDB**。副標題可使用 **Olympic Village Database & Post-Games Transformation**。
-
-這個作品展示你如何把營運、永續與賽後住宅轉型的需求，轉成資料模型、SQL 查詢與管理決策資訊。原始專案是團隊合作；報告紀錄中，Yi-Cheng Lee 的貢獻包含永續模組、整合 ERD 檢查、六組管理問題與 SQL、查詢解釋和最終 SQL 整合。
-
-這個 GitHub 儲存庫是可公開展示的技術版本，包含資料庫、六組 SQL、資料模型、中英文說明與驗證工具。原始報告、Team Charter、未處理的備份與來源工作簿不包含在此公開版本；完整私人整理包另外保留。這是 UQ 課程團隊作品，不代表 UQ 或奧運官方合作。
+公開版本已替換已辨識到的身分與聯絡欄位，原始報告、Team Charter、工作簿與未處理備份另行保留。[來源說明](docs/provenance.md) · [資料字典](docs/data-dictionary.md) · [公開範圍](docs/publication.md)。

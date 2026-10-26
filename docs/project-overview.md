@@ -33,4 +33,6 @@ The delivered database is an academic prototype with demo data. A relational des
 
 ## What this demonstrates in a portfolio
 
-The project connects business analysis, database design and SQL reporting. It demonstrates translating operational and sustainability requirements into related entities, integrating multiple team modules, and making query assumptions explicit. Present original team contributions accurately; avoid describing the work as a deployed Olympic system.
+The project connects SQL database development and data analysis. It demonstrates translating business requirements into related entities, building and querying the relational structure, and interpreting outputs with explicit metric populations and limitations.
+
+For database-development evidence, start with the [SQL skills walkthrough](sql-skills.md). For analytical evidence, read the [business cases](business-case-studies.md), which connect observed demo results to operational decisions. The [career positioning guide](career-positioning.md) supplies DB and Data Analyst presentation paths while keeping individual and team contributions distinct.

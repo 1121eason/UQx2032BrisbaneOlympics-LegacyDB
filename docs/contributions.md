@@ -17,3 +17,7 @@ The other team members contributed infrastructure, medical, people/accreditation
 The repository organization, bilingual READMEs, generated schema dictionary, reconciliation notes, validation tools, public demo identity replacement and Docker/CI configuration were prepared with AI assistance on **26 October 2026 (Australia/Brisbane)**. Original query logic is preserved; private original files and checksums remain in a separate source package. These additions are portfolio packaging, not evidence that the original team delivered production deployment or these specific validation scripts during the semester.
 
 No new licence is granted for team-owned or third-party materials. Obtain appropriate permissions before public redistribution.
+
+## Portfolio presentation update
+
+The bilingual homepages, SQL-skills walkthrough, business case studies and DB / Data Analyst presentation guide were refined with AI assistance on 26 October 2026. They connect existing code and verified sample outputs to business questions, proposed decisions and professional skills. They do not add a real client deployment, change the six reporting queries or reassign authorship of the team schema. Proposed business actions and simulated findings are labelled separately from achieved outcomes.
