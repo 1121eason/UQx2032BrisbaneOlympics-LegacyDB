@@ -80,7 +80,9 @@ Q5 retains two original result variants. Q6 uses `DENSE_RANK <= 10`, so tied ran
 
 ## Verification and limitations
 
-The preparation environment had no MySQL server or Docker. All 41 tables and 3,681 rows loaded into an adapted SQLite schema, all 46 foreign-key relationships had zero orphan records, and all six reporting files produced nine result sets. [Evidence](evidence/README.md) records the scope and dialect changes. These results do **not** establish MySQL runtime compatibility. The MySQL validation script and CI workflow are supplied for that next check.
+**MySQL 8 integration passed on GitHub Actions on 26 October 2026.** The workflow initialized a fresh database, confirmed the expected row counts for all 41 tables, found no orphan foreign-key references and successfully executed all six reporting files. See the [passing run](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494) and [validation record](evidence/mysql-validation.json).
+
+An additional adapted SQLite check loaded all 3,681 rows and produced nine result sets. Its CSV outputs and dialect adaptations are labelled separately in [evidence](evidence/README.md). Passing execution does not establish the business validity of the reporting assumptions or production readiness.
 
 The supplied Workbench models contain 40 tables and omit `roomconversion`, which is present in the database backup. The executable schema follows the backup. A stray spreadsheet import table is excluded from the execution copy. The original report also contains inconsistencies in query presentation and claims broader controls than the schema implements; see [known limitations](docs/known-limitations.md).
 

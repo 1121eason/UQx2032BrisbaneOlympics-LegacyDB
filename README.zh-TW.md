@@ -55,7 +55,9 @@ python3 scripts/validate_mysql.py --docker
 
 原始備份被拆成結構、資料、View 和查詢；執行版本移除了多餘的試算表匯入表與原本的 `root@localhost` View 定義者。公開版本中的姓名、生日、醫療人員註冊號碼，以及供應商／承包商名稱與聯絡信箱，都已替換成示範值。原始檔保留在另外的完整整理包中。
 
-本次環境沒有 MySQL 或 Docker，因此使用 SQLite 轉換進行資料與查詢邏輯檢查：41 張表共 3,681 筆資料成功載入、46 個外鍵沒有孤立參照、六組查詢都產生結果。**MySQL 8 實機驗證尚未執行**，已附上驗證腳本與 GitHub Actions 設定。細節見 [驗證紀錄](evidence/README.md)。
+**2026 年 10 月 26 日已通過 GitHub Actions 的 MySQL 8 驗證**：空白資料庫成功建立、41 張表的筆數符合預期、外鍵沒有孤立參照，六組 SQL 全部成功執行。[查看通過紀錄](https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494)。
+
+另外也完成 SQLite 轉換檢查，41 張表共載入 3,681 筆資料並產生九組結果。`evidence/` 的 CSV 明確標示為轉換檢查輸出；通過執行不代表所有管理假設已獲業務驗證。細節見 [驗證紀錄](evidence/README.md)。
 
 兩個原始 `.mwb` 模型都有 40 張表，缺少備份中存在的 `roomconversion`。執行版本以資料庫備份為準；完整限制請見 [known-limitations.md](docs/known-limitations.md)。
 

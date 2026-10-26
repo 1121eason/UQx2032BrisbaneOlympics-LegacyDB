@@ -1,0 +1,35 @@
+{
+  "validated_on": "2026-10-26",
+  "timezone": "Australia/Brisbane",
+  "engine_image": "mysql:8.0",
+  "verified_commit": "9eaaa728b09a13fda9ac74ab03ced4d88bf6b063",
+  "workflow": "MySQL 8 integration",
+  "run_id": 40268596494,
+  "job_id": 121396298986,
+  "conclusion": "success",
+  "run_url": "https://github.com/1121eason/UQx2032BrisbaneOlympics-LegacyDB/actions/runs/40268596494",
+  "checks": {
+    "fresh_database_initialization": "passed",
+    "domain_table_row_counts": "41 of 41 matched expected demo counts",
+    "expected_total_rows": 3681,
+    "orphan_foreign_keys": 0,
+    "reporting_files_executed": 6
+  },
+  "quality_review": {
+    "asset_without_any_disposal_record": 42,
+    "negative_energy_or_carbon": 0,
+    "missing_energy_or_carbon": 0,
+    "negative_water": 0,
+    "nonpositive_room_capacity": 0,
+    "invalid_accessibility_flag": 0,
+    "reversed_conversion_dates": 0,
+    "reversed_role_dates": 0,
+    "reversed_allocation_dates": 0,
+    "missing_medical_waste_dates": 0
+  },
+  "limits": [
+    "Validates import, demo counts, foreign-key integrity and query execution.",
+    "Does not establish correctness of all business assumptions or production readiness.",
+    "CSV files in this directory remain separately labelled SQLite-adapted outputs."
+  ]
+}

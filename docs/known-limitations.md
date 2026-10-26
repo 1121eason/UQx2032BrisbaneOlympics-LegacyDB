@@ -24,4 +24,4 @@
 
 A production implementation would need defined application access roles, consent and data-retention rules, clinical data separation, audited access, validation of quantities and date ranges, occupancy/overlap rules, tested backups, migrations, ingestion interfaces and monitoring. None is implied by storing the corresponding data in this prototype.
 
-MySQL runtime checks and Docker startup could not be executed in the preparation environment. The included CI workflow has not yet run here. Verify it after pushing to GitHub before claiming a passing MySQL build.
+MySQL runtime checks and Docker startup passed in GitHub Actions on 26 October 2026 for commit `9eaaa728b09a13fda9ac74ab03ced4d88bf6b063`. The preparation environment separately used the portable check. See `evidence/mysql-validation.json` for the verified run and its scope. Passing import and query execution does not resolve the semantic limitations above.
