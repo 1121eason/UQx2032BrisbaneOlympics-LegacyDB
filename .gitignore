@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.py[cod]
+.DS_Store
+._*
+__MACOSX/
+.venv/
+*.sqlite
+*.sqlite3
+*.lock
+dist/

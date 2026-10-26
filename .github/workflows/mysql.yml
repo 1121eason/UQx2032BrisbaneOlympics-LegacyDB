@@ -1,0 +1,27 @@
+name: MySQL 8 integration
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set temporary local test configuration
+        run: |
+          echo 'MYSQL_ROOT_PASSWORD=ci-disposable-test-only' > .env
+          echo 'MYSQL_PORT=3307' >> .env
+      - name: Initialize the demonstration database
+        run: docker compose up -d --wait
+      - name: Check row counts, foreign keys and six reporting files
+        run: python3 scripts/validate_mysql.py --docker
+      - name: Database startup logs on failure
+        if: failure()
+        run: docker compose logs db
+      - name: Stop temporary CI services
+        if: always()
+        run: docker compose down

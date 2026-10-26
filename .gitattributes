@@ -1,0 +1,8 @@
+* text=auto
+*.sql text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.pdf binary
+*.docx binary
+*.mwb binary

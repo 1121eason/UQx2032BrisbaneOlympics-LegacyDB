@@ -1,0 +1,4 @@
+disposalRank,disposalMethod,plannedAssetCount,percentageOfPlannedAssets,affectedCategoryCount,affectedVillageCount,affectedBuildingCount,firstPlannedDate,latestPlannedDate
+1,Recycling,21,36.21,5,4,6,2032-09-01,2032-11-15
+2,Resell,19,32.76,5,3,5,2032-09-15,2032-11-15
+3,Donation,18,31.03,5,4,5,2032-09-01,2032-11-15

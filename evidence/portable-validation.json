@@ -1,0 +1,115 @@
+{
+  "engine": "SQLite 3.53.1",
+  "validation_scope": "Portable structural and adapted-query smoke test; not MySQL runtime validation.",
+  "domain_tables": 41,
+  "foreign_keys": 46,
+  "orphan_foreign_keys": 0,
+  "total_rows": 3681,
+  "row_counts": {
+    "asset": 100,
+    "assetcategory": 5,
+    "assetdisposal": 100,
+    "building": 6,
+    "clinic": 20,
+    "clinicalservice": 7,
+    "clinicservice": 100,
+    "contractor": 100,
+    "conversionproject": 100,
+    "conversiontask": 100,
+    "country": 206,
+    "employmentactivity": 100,
+    "encounter": 100,
+    "encounterservice": 100,
+    "encounterstaff": 100,
+    "energymeter": 100,
+    "energyreading": 100,
+    "energysource": 10,
+    "facility": 100,
+    "facilityusage": 50,
+    "localemployment": 100,
+    "location": 4,
+    "medicalspecialty": 7,
+    "medicalstaff": 100,
+    "medicalwastecollection": 100,
+    "medicalwastetype": 10,
+    "noc": 206,
+    "person": 498,
+    "persongroup": 5,
+    "personrole": 498,
+    "role": 20,
+    "room": 100,
+    "roomallocation": 100,
+    "roomconversion": 0,
+    "supplier": 5,
+    "village": 4,
+    "wastecollection": 100,
+    "wastetype": 10,
+    "watermeter": 100,
+    "waterreading": 100,
+    "watersource": 10
+  },
+  "query_results": [
+    {
+      "query": "01_energy_consumption.sql",
+      "result_set": 1,
+      "rows": 1,
+      "file": "01_energy_consumption_result_1.csv"
+    },
+    {
+      "query": "01_energy_consumption.sql",
+      "result_set": 2,
+      "rows": 1,
+      "file": "01_energy_consumption_result_2.csv"
+    },
+    {
+      "query": "02_waste_compliance.sql",
+      "result_set": 1,
+      "rows": 1,
+      "file": "02_waste_compliance_result_1.csv"
+    },
+    {
+      "query": "02_waste_compliance.sql",
+      "result_set": 2,
+      "rows": 1,
+      "file": "02_waste_compliance_result_2.csv"
+    },
+    {
+      "query": "03_asset_disposal.sql",
+      "result_set": 1,
+      "rows": 3,
+      "file": "03_asset_disposal_result_1.csv"
+    },
+    {
+      "query": "04_local_employment.sql",
+      "result_set": 1,
+      "rows": 1,
+      "file": "04_local_employment_result_1.csv"
+    },
+    {
+      "query": "05_conversion_outcomes.sql",
+      "result_set": 1,
+      "rows": 2,
+      "file": "05_conversion_outcomes_result_1.csv"
+    },
+    {
+      "query": "05_conversion_outcomes.sql",
+      "result_set": 2,
+      "rows": 5,
+      "file": "05_conversion_outcomes_result_2.csv"
+    },
+    {
+      "query": "06_legacy_impact_ranking.sql",
+      "result_set": 1,
+      "rows": 70,
+      "file": "06_legacy_impact_ranking_result_1.csv"
+    }
+  ],
+  "mysql_runtime_validation": "not_run_in_preparation_environment",
+  "adaptations": [
+    "MySQL session variables substituted with literal dates.",
+    "MySQL datatypes/index syntax adapted for SQLite.",
+    "CAST(date AS DATETIME) adapted to SQLite datetime(date).",
+    "CONCAT registered as a SQLite function.",
+    "Views created without MySQL security clauses."
+  ]
+}

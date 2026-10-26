@@ -1,0 +1,106 @@
+digraph ERD {
+ graph [rankdir=TB, bgcolor="white", nodesep=0.3, ranksep=0.6];
+ node [shape=box, style="rounded,filled", fillcolor="#eef7f3", fontname="Helvetica", fontsize=11];
+ edge [color="#71877d", fontname="Helvetica", fontsize=8];
+ subgraph cluster_0 { label="People and accreditation"; color="#cedbd5";
+  "country" [label="country\nPK: countryCode"];
+  "noc" [label="noc\nPK: nocId"];
+  "person" [label="person\nPK: personId"];
+  "persongroup" [label="persongroup\nPK: groupingId"];
+  "personrole" [label="personrole\nPK: personId, roleId, startDate"];
+  "role" [label="role\nPK: roleId"];
+ }
+ subgraph cluster_1 { label="Infrastructure"; color="#cedbd5";
+  "location" [label="location\nPK: locationId"];
+  "village" [label="village\nPK: villageId"];
+  "building" [label="building\nPK: buildingId"];
+  "room" [label="room\nPK: roomId"];
+  "facility" [label="facility\nPK: facilityId"];
+  "roomallocation" [label="roomallocation\nPK: allocationId"];
+  "facilityusage" [label="facilityusage\nPK: usageId"];
+ }
+ subgraph cluster_2 { label="Sustainability"; color="#cedbd5";
+  "energysource" [label="energysource\nPK: energySourceId"];
+  "energymeter" [label="energymeter\nPK: energyMeterId"];
+  "energyreading" [label="energyreading\nPK: readingTimestamp, energyMeterId"];
+  "watersource" [label="watersource\nPK: waterSourceId"];
+  "watermeter" [label="watermeter\nPK: waterMeterId"];
+  "waterreading" [label="waterreading\nPK: waterMeterId, readingTimestamp"];
+  "wastetype" [label="wastetype\nPK: wasteTypeId"];
+  "wastecollection" [label="wastecollection\nPK: collectionTimestamp, buildingId, wasteTypeId"];
+  "medicalwastetype" [label="medicalwastetype\nPK: medicalWasteTypeId"];
+  "medicalwastecollection" [label="medicalwastecollection\nPK: medicalWasteLogId"];
+ }
+ subgraph cluster_3 { label="Medical operations"; color="#cedbd5";
+  "clinic" [label="clinic\nPK: clinicId"];
+  "clinicalservice" [label="clinicalservice\nPK: serviceId"];
+  "clinicservice" [label="clinicservice\nPK: clinicId, serviceId"];
+  "medicalspecialty" [label="medicalspecialty\nPK: specialtyId"];
+  "medicalstaff" [label="medicalstaff\nPK: staffCode"];
+  "encounter" [label="encounter\nPK: encounterId"];
+  "encounterservice" [label="encounterservice\nPK: encounterId, serviceId"];
+  "encounterstaff" [label="encounterstaff\nPK: encounterId, staffCode"];
+ }
+ subgraph cluster_4 { label="Asset lifecycle"; color="#cedbd5";
+  "supplier" [label="supplier\nPK: supplierId"];
+  "assetcategory" [label="assetcategory\nPK: categoryId"];
+  "asset" [label="asset\nPK: assetId"];
+  "assetdisposal" [label="assetdisposal\nPK: disposalId"];
+ }
+ subgraph cluster_5 { label="Post-Games conversion"; color="#cedbd5";
+  "contractor" [label="contractor\nPK: contractorId"];
+  "conversionproject" [label="conversionproject\nPK: conversionId"];
+  "conversiontask" [label="conversiontask\nPK: taskId"];
+  "roomconversion" [label="roomconversion\nPK: roomConversionId"];
+ }
+ subgraph cluster_6 { label="Social impact"; color="#cedbd5";
+  "localemployment" [label="localemployment\nPK: employmentId"];
+  "employmentactivity" [label="employmentactivity\nPK: activityId"];
+ }
+ "asset" -> "building" [label="buildingId"];
+ "asset" -> "assetcategory" [label="categoryId"];
+ "asset" -> "supplier" [label="supplierId"];
+ "assetdisposal" -> "asset" [label="assetId"];
+ "building" -> "village" [label="villageId"];
+ "clinic" -> "facility" [label="facilityId"];
+ "clinicservice" -> "clinic" [label="clinicId"];
+ "clinicservice" -> "clinicalservice" [label="serviceId"];
+ "conversionproject" -> "building" [label="buildingId"];
+ "conversionproject" -> "contractor" [label="contractorId"];
+ "conversiontask" -> "conversionproject" [label="conversionId"];
+ "employmentactivity" -> "localemployment" [label="employmentId"];
+ "encounter" -> "medicalstaff" [label="caseManagerId"];
+ "encounter" -> "clinic" [label="clinicId"];
+ "encounter" -> "person" [label="personId"];
+ "encounterservice" -> "encounter" [label="encounterId"];
+ "encounterservice" -> "clinicalservice" [label="serviceId"];
+ "encounterstaff" -> "encounter" [label="encounterId"];
+ "encounterstaff" -> "medicalstaff" [label="staffCode"];
+ "energymeter" -> "building" [label="buildingId"];
+ "energymeter" -> "energysource" [label="energySourceId"];
+ "energyreading" -> "energymeter" [label="energyMeterId"];
+ "facility" -> "building" [label="buildingId"];
+ "facilityusage" -> "facility" [label="facilityId"];
+ "facilityusage" -> "person" [label="personId"];
+ "localemployment" -> "conversionproject" [label="projectId"];
+ "medicalstaff" -> "person" [label="personId"];
+ "medicalstaff" -> "medicalspecialty" [label="specialtyId"];
+ "medicalwastecollection" -> "clinic" [label="clinicId"];
+ "medicalwastecollection" -> "medicalwastetype" [label="medicalWasteTypeId"];
+ "noc" -> "country" [label="countryCode"];
+ "person" -> "persongroup" [label="groupingId"];
+ "person" -> "noc" [label="nocId"];
+ "personrole" -> "person" [label="personId"];
+ "personrole" -> "role" [label="roleId"];
+ "room" -> "building" [label="buildingId"];
+ "roomallocation" -> "person" [label="personId"];
+ "roomallocation" -> "room" [label="roomId"];
+ "roomconversion" -> "conversionproject" [label="conversionId"];
+ "roomconversion" -> "room" [label="roomId"];
+ "village" -> "location" [label="locationId"];
+ "wastecollection" -> "building" [label="buildingId"];
+ "wastecollection" -> "wastetype" [label="wasteTypeId"];
+ "watermeter" -> "building" [label="buildingId"];
+ "watermeter" -> "watersource" [label="waterSourceId"];
+ "waterreading" -> "watermeter" [label="waterMeterId"];
+}

@@ -1,0 +1,1580 @@
+[
+  {
+    "table": "asset",
+    "columns": [
+      {
+        "name": "assetId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "assetName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "sustainabilityRating",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "assetStatus",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "categoryId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "supplierId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "assetId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_asset_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      },
+      {
+        "constraint": "fk_asset_category",
+        "columns": [
+          "categoryId"
+        ],
+        "parent": "assetcategory",
+        "parent_columns": [
+          "categoryId"
+        ]
+      },
+      {
+        "constraint": "fk_asset_supplier",
+        "columns": [
+          "supplierId"
+        ],
+        "parent": "supplier",
+        "parent_columns": [
+          "supplierId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "assetcategory",
+    "columns": [
+      {
+        "name": "categoryId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "categoryName",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "categoryId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "assetdisposal",
+    "columns": [
+      {
+        "name": "disposalId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "assetId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "disposalType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "disposalDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "disposalNote",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "disposalId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_assetdisposal_asset",
+        "columns": [
+          "assetId"
+        ],
+        "parent": "asset",
+        "parent_columns": [
+          "assetId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "building",
+    "columns": [
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "villageId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "constructionType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "legacyUseType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "energyRating",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "buildingId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_building_village",
+        "columns": [
+          "villageId"
+        ],
+        "parent": "village",
+        "parent_columns": [
+          "villageId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "clinic",
+    "columns": [
+      {
+        "name": "clinicId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "facilityId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "is24Hour",
+        "definition": "tinyint NOT NULL DEFAULT '0'"
+      },
+      {
+        "name": "infectionControlLevel",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "hasImaging",
+        "definition": "tinyint NOT NULL DEFAULT '0'"
+      },
+      {
+        "name": "hasRehabilitation",
+        "definition": "tinyint NOT NULL DEFAULT '0'"
+      }
+    ],
+    "primary_key": [
+      "clinicId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_clinic_facility",
+        "columns": [
+          "facilityId"
+        ],
+        "parent": "facility",
+        "parent_columns": [
+          "facilityId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "clinicalservice",
+    "columns": [
+      {
+        "name": "serviceId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "serviceName",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "serviceId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "clinicservice",
+    "columns": [
+      {
+        "name": "clinicId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "serviceId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "clinicId",
+      "serviceId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_clinicservice_clinic",
+        "columns": [
+          "clinicId"
+        ],
+        "parent": "clinic",
+        "parent_columns": [
+          "clinicId"
+        ]
+      },
+      {
+        "constraint": "fk_clinicservice_service",
+        "columns": [
+          "serviceId"
+        ],
+        "parent": "clinicalservice",
+        "parent_columns": [
+          "serviceId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "contractor",
+    "columns": [
+      {
+        "name": "contractorId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "contractorName",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "contractorType",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "contactEmail",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "sustainabilityRating",
+        "definition": "varchar(45) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "contractorId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "conversionproject",
+    "columns": [
+      {
+        "name": "conversionId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "contractorId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "originalUseType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "targetUseType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "startDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "endDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "conversionStatus",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "conversionId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_conversionproject_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      },
+      {
+        "constraint": "fk_conversionproject_contractor",
+        "columns": [
+          "contractorId"
+        ],
+        "parent": "contractor",
+        "parent_columns": [
+          "contractorId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "conversiontask",
+    "columns": [
+      {
+        "name": "taskId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "conversionId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "taskName",
+        "definition": "varchar(100) NOT NULL"
+      },
+      {
+        "name": "taskStatus",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "plannedCompletionDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "actualCompletionDate",
+        "definition": "date DEFAULT NULL"
+      },
+      {
+        "name": "taskNotes",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "taskId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_conversiontask_conversionproject",
+        "columns": [
+          "conversionId"
+        ],
+        "parent": "conversionproject",
+        "parent_columns": [
+          "conversionId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "country",
+    "columns": [
+      {
+        "name": "countryCode",
+        "definition": "char(3) NOT NULL"
+      },
+      {
+        "name": "countryName",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "countryCode"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "employmentactivity",
+    "columns": [
+      {
+        "name": "activityId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "activityDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "activityType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "hours",
+        "definition": "decimal(5,2) NOT NULL"
+      },
+      {
+        "name": "description",
+        "definition": "varchar(255) DEFAULT NULL"
+      },
+      {
+        "name": "employmentId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "activityId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_employmentActivity_localEmployment1",
+        "columns": [
+          "employmentId"
+        ],
+        "parent": "localemployment",
+        "parent_columns": [
+          "employmentId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "encounter",
+    "columns": [
+      {
+        "name": "encounterId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "clinicId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "caseManagerId",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "encounterTimestamp",
+        "definition": "datetime NOT NULL"
+      },
+      {
+        "name": "encounterType",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "encounterId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_encounter_casemanager",
+        "columns": [
+          "caseManagerId"
+        ],
+        "parent": "medicalstaff",
+        "parent_columns": [
+          "staffCode"
+        ]
+      },
+      {
+        "constraint": "fk_encounter_clinic",
+        "columns": [
+          "clinicId"
+        ],
+        "parent": "clinic",
+        "parent_columns": [
+          "clinicId"
+        ]
+      },
+      {
+        "constraint": "fk_encounter_person",
+        "columns": [
+          "personId"
+        ],
+        "parent": "person",
+        "parent_columns": [
+          "personId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "encounterservice",
+    "columns": [
+      {
+        "name": "encounterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "serviceId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "encounterId",
+      "serviceId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_encounterservice_encounter",
+        "columns": [
+          "encounterId"
+        ],
+        "parent": "encounter",
+        "parent_columns": [
+          "encounterId"
+        ]
+      },
+      {
+        "constraint": "fk_encounterservice_service",
+        "columns": [
+          "serviceId"
+        ],
+        "parent": "clinicalservice",
+        "parent_columns": [
+          "serviceId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "encounterstaff",
+    "columns": [
+      {
+        "name": "encounterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "staffCode",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "staffRole",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "encounterId",
+      "staffCode"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_encounterstaff_encounter",
+        "columns": [
+          "encounterId"
+        ],
+        "parent": "encounter",
+        "parent_columns": [
+          "encounterId"
+        ]
+      },
+      {
+        "constraint": "fk_encounterstaff_staff",
+        "columns": [
+          "staffCode"
+        ],
+        "parent": "medicalstaff",
+        "parent_columns": [
+          "staffCode"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "energymeter",
+    "columns": [
+      {
+        "name": "energyMeterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "meterCode",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "meterStatus",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "energySourceId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "energyMeterId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_energymeter_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      },
+      {
+        "constraint": "fk_energymeter_energysource",
+        "columns": [
+          "energySourceId"
+        ],
+        "parent": "energysource",
+        "parent_columns": [
+          "energySourceId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "energyreading",
+    "columns": [
+      {
+        "name": "readingTimestamp",
+        "definition": "datetime NOT NULL"
+      },
+      {
+        "name": "energyMeterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "energyConsumedKwh",
+        "definition": "decimal(12,2) DEFAULT NULL"
+      },
+      {
+        "name": "carbonIntensity",
+        "definition": "decimal(8,4) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "readingTimestamp",
+      "energyMeterId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_energyreading_energymeter",
+        "columns": [
+          "energyMeterId"
+        ],
+        "parent": "energymeter",
+        "parent_columns": [
+          "energyMeterId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "energysource",
+    "columns": [
+      {
+        "name": "energySourceId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "sourceName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "isRenewable",
+        "definition": "tinyint NOT NULL"
+      },
+      {
+        "name": "sourceDescription",
+        "definition": "varchar(225) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "energySourceId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "facility",
+    "columns": [
+      {
+        "name": "facilityId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "facilityName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "facilityType",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "facilityId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_facility_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "facilityusage",
+    "columns": [
+      {
+        "name": "usageId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "facilityId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "usageTimestamp",
+        "definition": "datetime NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "usageId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_facilityusage_facility",
+        "columns": [
+          "facilityId"
+        ],
+        "parent": "facility",
+        "parent_columns": [
+          "facilityId"
+        ]
+      },
+      {
+        "constraint": "fk_facilityusage_person",
+        "columns": [
+          "personId"
+        ],
+        "parent": "person",
+        "parent_columns": [
+          "personId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "localemployment",
+    "columns": [
+      {
+        "name": "isLocalResident",
+        "definition": "tinyint NOT NULL"
+      },
+      {
+        "name": "jobTitle",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "hireDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "projectId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "employmentId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "employmentNotes",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "employmentId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_localEmployment_conversionProject1",
+        "columns": [
+          "projectId"
+        ],
+        "parent": "conversionproject",
+        "parent_columns": [
+          "conversionId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "location",
+    "columns": [
+      {
+        "name": "locationId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "streetAddress",
+        "definition": "varchar(100) NOT NULL"
+      },
+      {
+        "name": "city",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "state",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "postcode",
+        "definition": "char(4) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "locationId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "medicalspecialty",
+    "columns": [
+      {
+        "name": "specialtyId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "specialtyName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "specialtyCode",
+        "definition": "char(1) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "specialtyId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "medicalstaff",
+    "columns": [
+      {
+        "name": "staffCode",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "specialtyId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "registrationNumber",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "registrationCountry",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "staffCode"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_medicalstaff_person",
+        "columns": [
+          "personId"
+        ],
+        "parent": "person",
+        "parent_columns": [
+          "personId"
+        ]
+      },
+      {
+        "constraint": "fk_medicalstaff_specialty",
+        "columns": [
+          "specialtyId"
+        ],
+        "parent": "medicalspecialty",
+        "parent_columns": [
+          "specialtyId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "medicalwastecollection",
+    "columns": [
+      {
+        "name": "medicalWasteLogId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "clinicId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "medicalWasteTypeId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "wasteCategory",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "logDate",
+        "definition": "date DEFAULT NULL"
+      },
+      {
+        "name": "weightKg",
+        "definition": "decimal(10,2) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "medicalWasteLogId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_medicalwastecollection_clinic",
+        "columns": [
+          "clinicId"
+        ],
+        "parent": "clinic",
+        "parent_columns": [
+          "clinicId"
+        ]
+      },
+      {
+        "constraint": "fk_medicalwastecollection_type",
+        "columns": [
+          "medicalWasteTypeId"
+        ],
+        "parent": "medicalwastetype",
+        "parent_columns": [
+          "medicalWasteTypeId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "medicalwastetype",
+    "columns": [
+      {
+        "name": "medicalWasteTypeId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "medicalWasteTypeName",
+        "definition": "varchar(225) DEFAULT NULL"
+      },
+      {
+        "name": "medicalWasteDescription",
+        "definition": "varchar(225) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "medicalWasteTypeId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "noc",
+    "columns": [
+      {
+        "name": "nocId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "nocName",
+        "definition": "varchar(80) NOT NULL"
+      },
+      {
+        "name": "countryCode",
+        "definition": "char(3) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "nocId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_noc_country",
+        "columns": [
+          "countryCode"
+        ],
+        "parent": "country",
+        "parent_columns": [
+          "countryCode"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "person",
+    "columns": [
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "firstName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "lastName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "dateOfBirth",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "gender",
+        "definition": "char(1) NOT NULL"
+      },
+      {
+        "name": "nocId",
+        "definition": "int DEFAULT NULL"
+      },
+      {
+        "name": "groupingId",
+        "definition": "int DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "personId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_person_grouping",
+        "columns": [
+          "groupingId"
+        ],
+        "parent": "persongroup",
+        "parent_columns": [
+          "groupingId"
+        ]
+      },
+      {
+        "constraint": "fk_person_noc",
+        "columns": [
+          "nocId"
+        ],
+        "parent": "noc",
+        "parent_columns": [
+          "nocId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "persongroup",
+    "columns": [
+      {
+        "name": "groupingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "groupingName",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "groupingId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "personrole",
+    "columns": [
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "roleId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "startDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "endDate",
+        "definition": "date DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "personId",
+      "roleId",
+      "startDate"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_personrole_person",
+        "columns": [
+          "personId"
+        ],
+        "parent": "person",
+        "parent_columns": [
+          "personId"
+        ]
+      },
+      {
+        "constraint": "fk_personrole_role",
+        "columns": [
+          "roleId"
+        ],
+        "parent": "role",
+        "parent_columns": [
+          "roleId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "role",
+    "columns": [
+      {
+        "name": "roleId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "roleName",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "roleId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "room",
+    "columns": [
+      {
+        "name": "roomId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "roomType",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "roomCapacity",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "isAccessible",
+        "definition": "tinyint NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "roomId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_room_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "roomallocation",
+    "columns": [
+      {
+        "name": "allocationId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "personId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "roomId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "startDate",
+        "definition": "date NOT NULL"
+      },
+      {
+        "name": "endDate",
+        "definition": "date DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "allocationId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_roomallocation_person",
+        "columns": [
+          "personId"
+        ],
+        "parent": "person",
+        "parent_columns": [
+          "personId"
+        ]
+      },
+      {
+        "constraint": "fk_roomallocation_room",
+        "columns": [
+          "roomId"
+        ],
+        "parent": "room",
+        "parent_columns": [
+          "roomId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "roomconversion",
+    "columns": [
+      {
+        "name": "roomConversionId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "conversionId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "roomId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "originalRoomUse",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "newRoomUse",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "conversionNotes",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "roomConversionId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_roomconversion_conversionproject",
+        "columns": [
+          "conversionId"
+        ],
+        "parent": "conversionproject",
+        "parent_columns": [
+          "conversionId"
+        ]
+      },
+      {
+        "constraint": "fk_roomconversion_room",
+        "columns": [
+          "roomId"
+        ],
+        "parent": "room",
+        "parent_columns": [
+          "roomId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "supplier",
+    "columns": [
+      {
+        "name": "supplierId",
+        "definition": "int NOT NULL AUTO_INCREMENT"
+      },
+      {
+        "name": "supplierName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "sustainabilityRating",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "contactEmail",
+        "definition": "varchar(45) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "supplierId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "village",
+    "columns": [
+      {
+        "name": "villageId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "villageName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "locationId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "villageId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_village_location",
+        "columns": [
+          "locationId"
+        ],
+        "parent": "location",
+        "parent_columns": [
+          "locationId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "wastecollection",
+    "columns": [
+      {
+        "name": "collectionTimestamp",
+        "definition": "timestamp NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "wasteTypeId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "quantityKg",
+        "definition": "decimal(10,2) NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "collectionTimestamp",
+      "buildingId",
+      "wasteTypeId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_wastecollection_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      },
+      {
+        "constraint": "fk_wastecollection_wastetype",
+        "columns": [
+          "wasteTypeId"
+        ],
+        "parent": "wastetype",
+        "parent_columns": [
+          "wasteTypeId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "wastetype",
+    "columns": [
+      {
+        "name": "wasteTypeId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "wasteTypeName",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "wasteDescription",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "wasteTypeId"
+    ],
+    "foreign_keys": []
+  },
+  {
+    "table": "watermeter",
+    "columns": [
+      {
+        "name": "waterMeterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "meterCode",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "meterStatus",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "waterSourceId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "buildingId",
+        "definition": "int NOT NULL"
+      }
+    ],
+    "primary_key": [
+      "waterMeterId"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_watermeter_building",
+        "columns": [
+          "buildingId"
+        ],
+        "parent": "building",
+        "parent_columns": [
+          "buildingId"
+        ]
+      },
+      {
+        "constraint": "fk_watermeter_watersource",
+        "columns": [
+          "waterSourceId"
+        ],
+        "parent": "watersource",
+        "parent_columns": [
+          "waterSourceId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "waterreading",
+    "columns": [
+      {
+        "name": "readingTimestamp",
+        "definition": "datetime NOT NULL"
+      },
+      {
+        "name": "waterMeterId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "waterConsumed",
+        "definition": "decimal(12,2) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "waterMeterId",
+      "readingTimestamp"
+    ],
+    "foreign_keys": [
+      {
+        "constraint": "fk_waterreading_watermeter",
+        "columns": [
+          "waterMeterId"
+        ],
+        "parent": "watermeter",
+        "parent_columns": [
+          "waterMeterId"
+        ]
+      }
+    ]
+  },
+  {
+    "table": "watersource",
+    "columns": [
+      {
+        "name": "waterSourceId",
+        "definition": "int NOT NULL"
+      },
+      {
+        "name": "sourceName",
+        "definition": "varchar(45) NOT NULL"
+      },
+      {
+        "name": "sourceType",
+        "definition": "varchar(45) DEFAULT NULL"
+      },
+      {
+        "name": "sourceDescription",
+        "definition": "varchar(255) DEFAULT NULL"
+      }
+    ],
+    "primary_key": [
+      "waterSourceId"
+    ],
+    "foreign_keys": []
+  }
+]

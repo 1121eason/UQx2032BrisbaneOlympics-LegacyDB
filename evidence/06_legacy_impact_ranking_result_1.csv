@@ -1,0 +1,71 @@
+overallRank,conversionId,villageName,buildingName,conversionOutcome,conversionStatus,contractorName,sustainabilityDimensionScore,roomConversionDimensionScore,localEmploymentDimensionScore,overallLegacyImpactScore,convertedRoomCount,convertedRoomCapacity,accessibleRoomCount,accessibleRoomPercentage,totalEmployees,localEmployees,localEmployeePercentage,totalWorkHours,localWorkHours,localWorkHourPercentage
+1,3,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Mixed Use,Completed,Demo Contractor 3,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,7.5,7.5,100.0
+1,15,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Public Facility,Completed,Demo Contractor 15,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,8,8,100.0
+1,27,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Community Facility,Completed,Demo Contractor 27,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,12,12,100.0
+1,39,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Site Restoration,Completed,Demo Contractor 39,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,7,7,100.0
+1,51,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Affordable Housing,Completed,Demo Contractor 51,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,8,8,100.0
+1,63,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Mixed Use,Completed,Demo Contractor 63,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,8.5,8.5,100.0
+1,75,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Public Facility,Completed,Demo Contractor 75,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,6.5,6.5,100.0
+1,87,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Community Facility,Completed,Demo Contractor 87,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,8,8,100.0
+1,99,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Site Restoration,Completed,Demo Contractor 99,87.0,84.71,100.0,90.1,17,43,4,23.53,1,1,100.0,8,8,100.0
+2,6,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 6,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,5.5,5.5,100.0
+2,18,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 18,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,8,8,100.0
+2,30,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 30,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,7,7,100.0
+2,42,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 42,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,7.5,7.5,100.0
+2,54,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 54,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,8,8,100.0
+2,66,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 66,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,9,9,100.0
+2,78,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 78,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,6,6,100.0
+2,90,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,In Progress,Demo Contractor 90,90.0,73.75,100.0,87.31,16,43,9,56.25,1,1,100.0,8,8,100.0
+3,7,Brisbane Athletes Village,Building A,Athlete Accommodation → Community Facility,Completed,Demo Contractor 7,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8,8,100.0
+3,19,Brisbane Athletes Village,Building A,Athlete Accommodation → Site Restoration,Completed,Demo Contractor 19,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8.5,8.5,100.0
+3,31,Brisbane Athletes Village,Building A,Athlete Accommodation → Affordable Housing,Completed,Demo Contractor 31,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8,8,100.0
+3,43,Brisbane Athletes Village,Building A,Athlete Accommodation → Mixed Use,Completed,Demo Contractor 43,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,9,9,100.0
+3,55,Brisbane Athletes Village,Building A,Athlete Accommodation → Public Facility,Completed,Demo Contractor 55,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,6,6,100.0
+3,67,Brisbane Athletes Village,Building A,Athlete Accommodation → Community Facility,Completed,Demo Contractor 67,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8,8,100.0
+3,79,Brisbane Athletes Village,Building A,Athlete Accommodation → Site Restoration,Completed,Demo Contractor 79,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8,8,100.0
+3,91,Brisbane Athletes Village,Building A,Athlete Accommodation → Affordable Housing,Completed,Demo Contractor 91,82.0,80.74,100.0,86.96,17,39,3,17.65,1,1,100.0,8,8,100.0
+4,11,Brisbane Athletes Village,Building E,Village Support Facility → Affordable Housing,Completed,Demo Contractor 11,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,8,8,100.0
+4,23,Brisbane Athletes Village,Building E,Village Support Facility → Mixed Use,Completed,Demo Contractor 23,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,10,10,100.0
+4,35,Brisbane Athletes Village,Building E,Village Support Facility → Public Facility,Completed,Demo Contractor 35,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,5.5,5.5,100.0
+4,47,Brisbane Athletes Village,Building E,Village Support Facility → Community Facility,Completed,Demo Contractor 47,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,8,8,100.0
+4,59,Brisbane Athletes Village,Building E,Village Support Facility → Site Restoration,Completed,Demo Contractor 59,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,7.5,7.5,100.0
+4,71,Brisbane Athletes Village,Building E,Village Support Facility → Affordable Housing,Completed,Demo Contractor 71,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,8,8,100.0
+4,83,Brisbane Athletes Village,Building E,Village Support Facility → Mixed Use,Completed,Demo Contractor 83,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,8,8,100.0
+4,95,Brisbane Athletes Village,Building E,Village Support Facility → Public Facility,Completed,Demo Contractor 95,75.0,80.26,100.0,84.34,16,38,3,18.75,1,1,100.0,8,8,100.0
+5,9,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Site Restoration,Planned,Demo Contractor 9,100.0,52.21,100.0,83.27,17,43,4,23.53,1,1,100.0,7,7,100.0
+5,21,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Affordable Housing,Planned,Demo Contractor 21,100.0,52.21,100.0,83.27,17,43,4,23.53,1,1,100.0,9,9,100.0
+5,45,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Public Facility,Planned,Demo Contractor 45,100.0,52.21,100.0,83.27,17,43,4,23.53,1,1,100.0,8,8,100.0
+5,69,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Site Restoration,Planned,Demo Contractor 69,100.0,52.21,100.0,83.27,17,43,4,23.53,1,1,100.0,8,8,100.0
+5,81,Sunshine Coast Athletes Village,Building C,Temporary Village Accommodation → Affordable Housing,Planned,Demo Contractor 81,100.0,52.21,100.0,83.27,17,43,4,23.53,1,1,100.0,8,8,100.0
+6,2,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 2,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,10.5,10.5,100.0
+6,14,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 14,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,7.5,7.5,100.0
+6,26,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 26,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,9.5,9.5,100.0
+6,38,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 38,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,8,8,100.0
+6,50,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 50,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,9,9,100.0
+6,62,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 62,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,11,11,100.0
+6,74,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 74,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,8,8,100.0
+6,86,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 86,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,8,8,100.0
+6,98,Gold Coast Athletes Village,Building B,Village Support Facility → Affordable Housing,In Progress,Demo Contractor 98,82.0,65.33,100.0,81.57,17,42,3,17.65,1,1,100.0,8,8,100.0
+7,1,Brisbane Athletes Village,Building A,Athlete Accommodation → Affordable Housing,Planned,Demo Contractor 1,95.0,48.24,100.0,80.13,17,39,3,17.65,1,1,100.0,8,8,100.0
+7,25,Brisbane Athletes Village,Building A,Athlete Accommodation → Public Facility,Planned,Demo Contractor 25,95.0,48.24,100.0,80.13,17,39,3,17.65,1,1,100.0,8,8,100.0
+7,49,Brisbane Athletes Village,Building A,Athlete Accommodation → Site Restoration,Planned,Demo Contractor 49,95.0,48.24,100.0,80.13,17,39,3,17.65,1,1,100.0,8,8,100.0
+7,61,Brisbane Athletes Village,Building A,Athlete Accommodation → Affordable Housing,Planned,Demo Contractor 61,95.0,48.24,100.0,80.13,17,39,3,17.65,1,1,100.0,8,8,100.0
+7,85,Brisbane Athletes Village,Building A,Athlete Accommodation → Public Facility,Planned,Demo Contractor 85,95.0,48.24,100.0,80.13,17,39,3,17.65,1,1,100.0,8,8,100.0
+8,10,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 10,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8.5,8.5,100.0
+8,22,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 22,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8,8,100.0
+8,34,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 34,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8,8,100.0
+8,46,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 46,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8.5,8.5,100.0
+8,58,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 58,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8.5,8.5,100.0
+8,70,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 70,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8.5,8.5,100.0
+8,82,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 82,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8,8,100.0
+8,94,Rowing Athletes Village,Building D,Athlete Accommodation → Affordable Housing,In Progress,Demo Contractor 94,75.0,65.81,100.0,79.28,17,41,4,23.53,1,1,100.0,8,8,100.0
+9,5,Brisbane Athletes Village,Building E,Village Support Facility → Public Facility,Planned,Demo Contractor 5,87.0,47.76,100.0,77.17,16,38,3,18.75,1,1,100.0,8,8,100.0
+9,29,Brisbane Athletes Village,Building E,Village Support Facility → Site Restoration,Planned,Demo Contractor 29,87.0,47.76,100.0,77.17,16,38,3,18.75,1,1,100.0,4,4,100.0
+9,41,Brisbane Athletes Village,Building E,Village Support Facility → Affordable Housing,Planned,Demo Contractor 41,87.0,47.76,100.0,77.17,16,38,3,18.75,1,1,100.0,8,8,100.0
+9,65,Brisbane Athletes Village,Building E,Village Support Facility → Public Facility,Planned,Demo Contractor 65,87.0,47.76,100.0,77.17,16,38,3,18.75,1,1,100.0,8,8,100.0
+9,89,Brisbane Athletes Village,Building E,Village Support Facility → Site Restoration,Planned,Demo Contractor 89,87.0,47.76,100.0,77.17,16,38,3,18.75,1,1,100.0,8,8,100.0
+10,12,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,Delayed,Demo Contractor 12,75.0,46.25,100.0,72.44,16,43,9,56.25,1,1,100.0,6.5,6.5,100.0
+10,36,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,Delayed,Demo Contractor 36,75.0,46.25,100.0,72.44,16,43,9,56.25,1,1,100.0,10.5,10.5,100.0
+10,60,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,Delayed,Demo Contractor 60,75.0,46.25,100.0,72.44,16,43,9,56.25,1,1,100.0,8,8,100.0
+10,72,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,Delayed,Demo Contractor 72,75.0,46.25,100.0,72.44,16,43,9,56.25,1,1,100.0,7,7,100.0
+10,96,Gold Coast Athletes Village,Building F,Temporary Village Accommodation → Affordable Housing,Delayed,Demo Contractor 96,75.0,46.25,100.0,72.44,16,43,9,56.25,1,1,100.0,8,8,100.0
